@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 @Qualifier("sqlBookRepository")
-class BookSqlRepositoryImpl : SearchBooksExternalPort {
+class BookSqlRepositoryImpl(private val bookRepository: BookRepository) : SearchBooksExternalPort {
     override fun findBooks(): List<Book> {
-        // bookRepository.findAll().map(BookOrm::toModel)
-        return listOf<Book>()
+        return bookRepository.findAll().map { it.toModel() }
     }
 }
