@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application.name: clean-architecture
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    minIdle: 5
+    maxPoolSize: 30
+    idleTimeout: 30000
+    maxWait: 250
+    timezone: UTC
+    characterEncoding: UTF-8
+    name: myDbClean
+    endpoint: localhost:${datasource.port:3397}
+    username: myUserClean
+    password: myPassClean
+    url: jdbc:mysql://${spring.datasource.endpoint}/${spring.datasource.name}
+  messages:
+    fallback-to-system-locale: true
+    use-code-as-default-message: true
+    basename: messages/messages, messages/validation-messages
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  profiles:
+    active: ${scope:${profiles:it}}
