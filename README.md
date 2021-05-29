@@ -6,8 +6,12 @@ Apply concepts from SOLID, Interface Adapters.
 
 ## Setup
 
-Requires [Java] >= 1.8.x
+Requires:
+* Java >= 1.8.x
+* Docker
 
+## How to Run
+The first thing is to run the file makeFile "make mysql.run",  this will generate a docker container a mysql image
 
 ## Embedded MySql
 
