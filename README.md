@@ -13,6 +13,8 @@ Requires:
 ## How to Run
 The first thing is to run the file makeFile "make mysql.run",  this will generate a docker container a mysql image
 
+## Glimpse Solution 
+<img src="https://github.com/dani-saavedra/example-clean-architecture/blob/main/doc/N-layer_with_clean_architecture.jpg">
 ## Embedded MySql
 
 The embedded MySql is used only when running the tests. This one is only started in the Gradle test task.
