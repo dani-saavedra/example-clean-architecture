@@ -1,5 +1,5 @@
 package com.danisaavedra.cleanarchitecture.service.api
 
-interface SearchBook {
+interface ISearchBook {
     fun getBooks()
 }
