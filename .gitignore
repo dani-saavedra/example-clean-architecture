@@ -4,6 +4,7 @@ build/
 .vscode/
 bin/
 
+
 ### STS ###
 .apt_generated
 .classpath
