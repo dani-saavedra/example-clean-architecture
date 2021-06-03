@@ -1,6 +1,6 @@
-package com.danisaavedra.cleanarchitecture.service.book
+package com.danisaavedra.cleanarchitecture.service.book.impl
 
-import com.danisaavedra.cleanarchitecture.service.api.ISearchBook
+import com.danisaavedra.cleanarchitecture.service.book.api.ISearchBook
 import com.danisaavedra.cleanarchitecture.service.port.book.SearchBooksExternalPort
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service

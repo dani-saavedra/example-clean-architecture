@@ -23,5 +23,13 @@ data class BookOrm(
         title = title,
         origin = "SQL",
     )
+
+    companion object {
+        fun fromModel(model: Book) = BookOrm(
+            id = model.id.toInt(),
+            title = model.title,
+            completed = model.completed,
+        )
+    }
 }
 
