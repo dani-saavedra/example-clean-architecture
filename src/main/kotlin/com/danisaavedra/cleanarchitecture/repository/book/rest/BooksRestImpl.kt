@@ -1,6 +1,7 @@
 package com.danisaavedra.cleanarchitecture.repository.book.rest
 
 import com.beust.klaxon.Klaxon
+import com.danisaavedra.cleanarchitecture.repository.book.InvalidSaleException
 import com.danisaavedra.cleanarchitecture.repository.book.rest.dto.BookDto
 import com.danisaavedra.cleanarchitecture.service.book.model.Book
 import com.danisaavedra.cleanarchitecture.service.port.book.SearchBooksExternalPort
@@ -11,11 +12,22 @@ import org.springframework.web.client.RestTemplate
 
 @Service
 @Qualifier("restBookRepository")
-class BooksRestImpl : SearchBooksExternalPort {
+class BooksRestImpl(private val generateMembership: GenerateMembership, private val saveSale: GenerateMembership) : SearchBooksExternalPort {
+
 
     override fun findBooks(): List<Book> {
         val uri = "https://jsonplaceholder.typicode.com/todos/"
         val body = RestTemplate().getForEntity(uri, String::class.java).body
         return Klaxon().parseArray<BookDto>(body!!)?.map { it -> it.toModel() } ?: listOf()
+    }
+
+    fun sellBook(idClient: String, booksToSell: List<Book>) {
+        if (booksToSell.size > 5) {
+            throw InvalidSaleException("number of books exceeds what is allowed")
+        }
+        if (booksToSell.size == 5) {
+            generateMembership.registerNew(idClient)
+        }
+        saveSale.saveCustomerPurchase(idClient, booksToSell)
     }
 }
