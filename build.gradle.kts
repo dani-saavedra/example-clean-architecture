@@ -4,7 +4,7 @@ import com.wix.mysql.EmbeddedMysql.anEmbeddedMysql
 import com.wix.mysql.config.MysqldConfig.aMysqldConfig
 import com.wix.mysql.distribution.Version.v8_0_17
 
-group = "com.mercadolibre"
+group = "com.cleanarchitecture"
 version = "1.0.0"
 val unitTestPath = "unit-test"
 val dbUser = "myUserClean"
